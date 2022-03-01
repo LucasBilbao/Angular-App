@@ -1,0 +1,69 @@
+<div class="wrapper">
+  <header class="header">
+    <h1 style="font-weight: bold">Documents(1)</h1>
+  </header>
+  <main class="grid-item2">
+    <textarea
+      class="note-area"
+      name=""
+      id=""
+      placeholder="Write something nice..."
+      [(ngModel)]="description"
+    ></textarea>
+  </main>
+  <nav>
+    <div class="documents">
+      <mat-form-field
+        *ngIf="!isTitled"
+        class="example-form-field"
+        appearance="fill"
+      >
+        <mat-label>New Title</mat-label>
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="value"
+          autocomplete="off"
+          *ngIf="!isTitled"
+        />
+        <button
+          *ngIf="value && !isTitled"
+          matSuffix
+          mat-icon-button
+          aria-label="Check"
+          (click)="commitTitle()"
+          [disabled]="isValidTitle()"
+        >
+          <mat-icon color="primary">check</mat-icon>
+        </button>
+        <button
+          *ngIf="value && !isTitled"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+        >
+          <mat-icon color="primary">close</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-card class="title-card" *ngIf="isTitled">
+          {{ value }}
+
+        <button
+          *ngIf="isTitled"
+          mat-icon-button
+          mat-button
+          [matMenuTriggerFor]="delete"
+          aria-label="Delete"
+          class="delete-btn"
+        >
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+        <mat-menu #delete="matMenu">
+          <button mat-menu-item>Delete</button>
+        </mat-menu>
+      </mat-card>
+    </div>
+    <button mat-button class="btn-add-document">+</button>
+  </nav>
+</div>

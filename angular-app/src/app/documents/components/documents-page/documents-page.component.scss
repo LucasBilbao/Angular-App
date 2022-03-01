@@ -1,0 +1,71 @@
+.example-form-field {
+  width: 100%;
+}
+
+button {
+  border: none;
+}
+
+.wrapper {
+  display: grid;
+
+  width: 100%;
+  height: 100%;
+
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: minmax(50px, 50px) 3fr;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.grid-item2 {
+  grid-row: span 2;
+  border-left: 1px solid black;
+  width: auto;
+
+
+  .note-area {
+    width: 100%;
+    height: 100%;
+    padding: 27px;
+
+    resize: none;
+    border: none;
+
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+
+  .note-area:focus {
+    outline: 0;
+  }
+}
+
+nav {
+  margin: 30px 30px 0px 30px;
+  .btn-add-document {
+    width: 100%;
+  }
+}
+
+.delete-btn {
+  position: relative;
+  right: 0;
+}
+
+.title-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 1em;
+  cursor: pointer;
+}
