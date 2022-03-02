@@ -1,8 +1,7 @@
 <textarea
   *ngIf="document"
   class="note-area"
-  name=""
-  id=""
+  [disabled]="!document.isTitled"
   placeholder="Write something nice..."
   [(ngModel)]="document.description"
 ></textarea>
