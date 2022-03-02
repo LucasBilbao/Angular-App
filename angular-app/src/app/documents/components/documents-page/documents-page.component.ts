@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DocumentItem } from '../../models/document.model';
+import { DocumentService } from '../../services/document.service';
 
 @Component({
   selector: 'app-documents-page',
@@ -6,20 +8,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./documents-page.component.scss'],
 })
 export class DocumentsPageComponent implements OnInit {
-  value: string = '';
+  title: string = '';
 
-  isTitled: boolean = false;
   description: string = '';
 
-  constructor() {}
+  documents: DocumentItem[] = [];
 
-  ngOnInit(): void {}
+  counter: number = 1;
 
-  commitTitle(): void {
-    this.isTitled = true;
+  constructor(private documentService: DocumentService) {}
+
+  ngOnInit(): void {
+    this.documents = this.documentService.getDocuments();
   }
 
-  isValidTitle(): boolean {
-    return this.value === '';
+  canCreateNewDocument() {
+    const documentsCount = this.documents.length;
+
+    if (documentsCount === 0) return true;
+    else {
+      return this.documents[documentsCount - 1].isTitled;
+    }
+  }
+
+  createNewDocument(): void {
+    this.documentService.addNewDocument();
+    this.documents = this.documentService.getDocuments();
+  }
+
+  getDocumentWithActiveID(): DocumentItem | null {
+    const theDoc = this.documentService.getDocumentByID(
+      this.documentService.getActiveID()
+    );
+
+    return theDoc ? theDoc : null;
   }
 }
