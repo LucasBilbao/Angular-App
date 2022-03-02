@@ -1,0 +1,47 @@
+<mat-form-field class="example-form-field" appearance="fill">
+  <mat-label>New Title</mat-label>
+  <form (submit)="commitTitle()">
+    <input
+      type="text"
+      matInput
+      [(ngModel)]="title"
+      name="title"
+      autocomplete="off"
+      *ngIf="!document?.isTitled"
+      appMyAutoFocus
+    />
+  </form>
+  <button
+    *ngIf="title && !document?.isTitled"
+    matSuffix
+    mat-icon-button
+    aria-label="Check"
+    (click)="commitTitle()"
+    [disabled]="!isAValidTitle()"
+  >
+    <mat-icon color="primary">check</mat-icon>
+  </button>
+  <button
+    *ngIf="title && !document?.isTitled"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="title = ''"
+  >
+    <mat-icon color="primary">close</mat-icon>
+  </button>
+
+  <button
+    matSuffix
+    mat-icon-button
+    [matMenuTriggerFor]="delete"
+    aria-label="Delete"
+    class="btn-delete-document"
+  >
+    <mat-icon color="warn">delete</mat-icon>
+  </button>
+
+  <mat-menu #delete="matMenu">
+    <button mat-menu-item (click)="deleteDocument()">Delete</button>
+  </mat-menu>
+</mat-form-field>

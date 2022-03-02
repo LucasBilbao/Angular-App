@@ -1,0 +1,8 @@
+<app-edit-title
+  *ngIf="!document?.isTitled; else titleCard"
+  [document]="document"
+></app-edit-title>
+
+<ng-template #titleCard>
+  <app-title-card [document]="document"></app-title-card>
+</ng-template>

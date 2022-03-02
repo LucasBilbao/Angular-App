@@ -1,0 +1,17 @@
+.delete-btn {
+  position: relative;
+  right: 0;
+}
+
+.title-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 1em;
+  cursor: pointer;
+}
+
+.active{
+  background-color: rgba(0, 0, 0, 0.075);
+}

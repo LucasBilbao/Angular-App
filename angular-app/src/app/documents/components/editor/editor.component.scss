@@ -1,0 +1,15 @@
+.note-area {
+  width: 100%;
+  height: 100%;
+  padding: 27px;
+
+  resize: none;
+  border: none;
+
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+
+.note-area:focus {
+  outline: 0;
+}
