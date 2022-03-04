@@ -18,7 +18,7 @@ export class TitleCardComponent implements OnInit, OnChanges {
 
   title: string = '';
 
-  activeID: number = -1;
+  activeID: string = '-1';
 
   constructor(private documentService: DocumentService) {}
 
