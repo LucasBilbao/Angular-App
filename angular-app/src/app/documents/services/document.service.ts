@@ -5,16 +5,9 @@ import { DocumentItem } from '../models/document.model';
   providedIn: 'root',
 })
 export class DocumentService {
-  private documents: DocumentItem[] = [
-    {
-      id: 1,
-      title: 'Lucas',
-      description: 'That is my name!',
-      isTitled: true,
-    },
-  ];
+  private documents: DocumentItem[] = [];
 
-  private activeID: number = this.documents ? this.documents[0].id : -1;
+  private activeID: string = '';
 
   counter: number = 2;
 
@@ -25,12 +18,10 @@ export class DocumentService {
   }
 
   public addNewDocument(): void {
-    this.activeID = this.counter;
-
     this.documents = [
       ...this.documents,
       {
-        id: this.counter++,
+        id: this.getUniqueID(),
         title: '',
         description: '',
         isTitled: false,
@@ -38,7 +29,7 @@ export class DocumentService {
     ];
   }
 
-  getDocumentByID(id: number): DocumentItem | undefined {
+  getDocumentByID(id: string): DocumentItem | undefined {
     for (let i = 0; i < this.documents.length; i += 1) {
       if (this.documents[i].id === id) return this.documents[i];
     }
@@ -46,26 +37,31 @@ export class DocumentService {
     return;
   }
 
-  public deleteItemByID(id: number): void {
+  public deleteItemByID(id: string): void {
     const index = this.indexOfDocumentWithID(id);
 
     this.documents.splice(index, 1);
 
-    this.activeID = id === this.activeID ? this.documents[0].id : this.activeID;
+    this.activeID = '';
   }
 
-  indexOfDocumentWithID(id: number): number {
+  indexOfDocumentWithID(id: string): number {
     for (let i = 0; i < this.documents.length; i += 1) {
       if (this.documents[i].id === id) return i;
     }
     return -1;
   }
 
-  public activateID(id: number) {
+  public activateID(id: string) {
     this.activeID = id;
   }
 
-  public getActiveID(): number {
+  public getActiveID(): string {
+    return this.activeID;
+  }
+
+  getUniqueID(): string {
+    this.activeID = new Date().getTime().toString();
     return this.activeID;
   }
 }
