@@ -12,6 +12,7 @@ import { EditTitleComponent } from '../components/titles/edit-title/edit-title.c
 import { TitleComponent } from '../components/titles/title/title.component';
 import { TitleCardComponent } from '../components/titles/title-card/title-card.component';
 import { MyAutoFocusDirective } from '../directives/my-auto-focus/my-auto-focus.directive';
+import { ShareModule } from 'src/app/share/share.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { MyAutoFocusDirective } from '../directives/my-auto-focus/my-auto-focus.
     TitleCardComponent,
     MyAutoFocusDirective,
   ],
-  imports: [CommonModule, FormsModule, CoreModule],
+  imports: [CommonModule, FormsModule, CoreModule, ShareModule],
   exports: [DocumentsPageComponent],
 })
 export class DocumentsModule {}
