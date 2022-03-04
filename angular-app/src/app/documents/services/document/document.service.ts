@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DocumentItem } from '../models/document.model';
+import { DocumentItem } from '../../models/document.model';
 
 @Injectable({
   providedIn: 'root',
@@ -29,12 +29,12 @@ export class DocumentService {
     ];
   }
 
-  getDocumentByID(id: string): DocumentItem | undefined {
+  getDocumentByID(id: string): DocumentItem | null {
     for (let i = 0; i < this.documents.length; i += 1) {
       if (this.documents[i].id === id) return this.documents[i];
     }
 
-    return;
+    return null;
   }
 
   public deleteItemByID(id: string): void {
