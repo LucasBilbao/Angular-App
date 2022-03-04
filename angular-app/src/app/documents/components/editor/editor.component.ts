@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DocumentItem } from '../../models/document.model';
-import { DocumentService } from '../../services/document.service';
+import { DocumentService } from '../../services/document/document.service';
 
 @Component({
   selector: 'app-editor',

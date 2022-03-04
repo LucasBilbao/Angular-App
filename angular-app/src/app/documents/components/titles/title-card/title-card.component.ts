@@ -6,7 +6,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { DocumentItem } from 'src/app/documents/models/document.model';
-import { DocumentService } from 'src/app/documents/services/document.service';
+import { DocumentService } from 'src/app/documents/services/document/document.service';
 
 @Component({
   selector: 'app-title-card',

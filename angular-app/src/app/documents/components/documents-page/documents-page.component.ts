@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentItem } from '../../models/document.model';
-import { DocumentService } from '../../services/document.service';
+import { DocumentService } from '../../services/document/document.service';
 
 @Component({
   selector: 'app-documents-page',
@@ -8,18 +8,14 @@ import { DocumentService } from '../../services/document.service';
   styleUrls: ['./documents-page.component.scss'],
 })
 export class DocumentsPageComponent implements OnInit {
-  title: string = '';
-
-  description: string = '';
-
   documents: DocumentItem[] = [];
-
-  counter: number = 1;
+  activeDocument: DocumentItem | null = null;
 
   constructor(private documentService: DocumentService) {}
 
   ngOnInit(): void {
     this.documents = this.documentService.getDocuments();
+    this.getActiveDocument();
   }
 
   canCreateNewDocument() {
@@ -36,11 +32,13 @@ export class DocumentsPageComponent implements OnInit {
     this.documents = this.documentService.getDocuments();
   }
 
-  getDocumentWithActiveID(): DocumentItem | null {
-    const theDoc = this.documentService.getDocumentByID(
-      this.documentService.getActiveID()
-    );
+  getActiveDocument(): DocumentItem | null {
+    const activeID = this.documentService.getActiveID();
 
-    return theDoc ? theDoc : null;
+    if (activeID !== this.activeDocument?.id) {
+      this.activeDocument = this.documentService.getDocumentByID(activeID);
+    }
+
+    return this.activeDocument;
   }
 }
