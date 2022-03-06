@@ -1,10 +1,5 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DocumentItem } from 'src/app/documents/models/document.model';
 import { DocumentService } from 'src/app/documents/services/document/document.service';
 
@@ -13,33 +8,32 @@ import { DocumentService } from 'src/app/documents/services/document/document.se
   templateUrl: './title-card.component.html',
   styleUrls: ['./title-card.component.scss'],
 })
-export class TitleCardComponent implements OnInit, OnChanges {
+export class TitleCardComponent implements OnInit {
   @Input() document: DocumentItem | null = null;
 
   title: string = '';
 
   activeID: string = '-1';
 
-  constructor(private documentService: DocumentService) {}
+  constructor(
+    private documentService: DocumentService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-    this.activeID = this.documentService.getActiveID();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {}
+  ngOnInit(): void {}
 
   deleteDocument(): void {
-    if (this.document) this.documentService.deleteItemByID(this.document.id);
+    if (this.document) {
+      this.documentService.deleteItemByID(this.document.id).subscribe();
+      this.router.navigateByUrl('');
+    }
   }
 
   activateDocument(): void {
-    if (this.document) this.documentService.activateID(this.document.id);
+    this.router.navigateByUrl(`document/${this.document?.id}`);
   }
 
   isActive(): boolean {
-    if (this.document)
-      return this.document.id === this.documentService.getActiveID();
-
-    return false;
+    return this.documentService.getActiveID() === this.document?.id;
   }
 }
