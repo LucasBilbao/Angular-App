@@ -43,11 +43,11 @@ export class DocumentService {
     ];
   }
 
-  public postNewDocumentByID(document: DocumentItem): void {
+  public postNewDocument(document: DocumentItem): void {
     if (document) this.http.post(this.url, document).subscribe();
   }
 
-  public putUpdateDocumentByID(document: DocumentItem): void {
+  public putUpdateDocument(document: DocumentItem): void {
     if (document)
       this.http.put(`${this.url}/${document.id}`, document).subscribe();
   }
