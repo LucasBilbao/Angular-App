@@ -11,11 +11,15 @@ export class DocumentsPageComponent implements OnInit {
   documents: DocumentItem[] = [];
   activeDocument: DocumentItem | null = null;
 
+  isLoading: boolean = true;
+
   constructor(private documentService: DocumentService) {}
 
   ngOnInit(): void {
-    this.documents = this.documentService.getDocuments();
-    this.getActiveDocument();
+    this.documentService.fetchDocuments().then((documents) => {
+      this.documents = documents;
+      this.isLoading = false;
+    });
   }
 
   canCreateNewDocument() {
@@ -30,15 +34,5 @@ export class DocumentsPageComponent implements OnInit {
   createNewDocument(): void {
     this.documentService.addNewDocument();
     this.documents = this.documentService.getDocuments();
-  }
-
-  getActiveDocument(): DocumentItem | null {
-    const activeID = this.documentService.getActiveID();
-
-    if (activeID !== this.activeDocument?.id) {
-      this.activeDocument = this.documentService.getDocumentByID(activeID);
-    }
-
-    return this.activeDocument;
   }
 }

@@ -1,13 +1,10 @@
-<app-loader *ngIf="documents === []; else documentsPage"></app-loader>
+<app-loader *ngIf="isLoading; else documentsPage"></app-loader>
 
 <ng-template #documentsPage>
   <div class="wrapper">
     <app-header [documentsCount]="documents.length"></app-header>
     <main class="grid-item2">
-      <app-editor
-        *ngIf="documents.length !== 0"
-        [document]="getActiveDocument()"
-      ></app-editor>
+      <router-outlet></router-outlet>
     </main>
     <nav>
       <app-titles [documents]="documents"></app-titles>
