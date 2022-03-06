@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DocumentItem } from 'src/app/documents/models/document.model';
 import { DocumentService } from 'src/app/documents/services/document/document.service';
 
@@ -14,7 +15,10 @@ export class EditTitleComponent implements OnInit {
 
   title: string = '';
 
-  constructor(private documentService: DocumentService) {}
+  constructor(
+    private documentService: DocumentService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -22,6 +26,8 @@ export class EditTitleComponent implements OnInit {
     if (this.document) {
       this.document.isTitled = true;
       this.document.title = this.title;
+      this.documentService.postNewDocument(this.document);
+      this.router.navigate(['document', this.document?.id]);
     }
   }
 
@@ -30,6 +36,9 @@ export class EditTitleComponent implements OnInit {
   }
 
   deleteDocument(): void {
-    if (this.document) this.documentService.deleteItemByID(this.document.id);
+    if (this.document) {
+      this.documentService.deleteItemByID(this.document.id);
+      this.router.navigateByUrl('');
+    }
   }
 }
