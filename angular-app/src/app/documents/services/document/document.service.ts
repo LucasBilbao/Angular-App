@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DocumentItem } from '../../models/document.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,13 +9,25 @@ import { DocumentItem } from '../../models/document.model';
 export class DocumentService {
   private documents: DocumentItem[] = [];
 
-  private activeID: string = '';
+  url: string = 'documents';
 
-  counter: number = 2;
+  activeID: string = '';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  public getDocuments(): DocumentItem[] {
+  public async fetchDocuments(): Promise<DocumentItem[]> {
+    this.http.get<DocumentItem[]>(this.url).subscribe((documents) => {
+      this.documents = documents;
+    });
+
+    return new Promise((res) => {
+      setTimeout(() => {
+        res(this.getDocuments());
+      }, 2500);
+    });
+  }
+
+  getDocuments(): DocumentItem[] {
     return this.documents;
   }
 
@@ -29,20 +43,28 @@ export class DocumentService {
     ];
   }
 
+  public postNewDocumentByID(document: DocumentItem): void {
+    if (document) this.http.post(this.url, document).subscribe();
+  }
+
+  public putUpdateDocumentByID(document: DocumentItem): void {
+    if (document)
+      this.http.put(`${this.url}/${document.id}`, document).subscribe();
+  }
+
   getDocumentByID(id: string): DocumentItem | null {
     for (let i = 0; i < this.documents.length; i += 1) {
       if (this.documents[i].id === id) return this.documents[i];
     }
-
     return null;
   }
 
-  public deleteItemByID(id: string): void {
+  public deleteItemByID(id: string): Observable<DocumentItem> {
     const index = this.indexOfDocumentWithID(id);
 
     this.documents.splice(index, 1);
 
-    this.activeID = '';
+    return this.http.delete<DocumentItem>(`${this.url}/${id}`);
   }
 
   indexOfDocumentWithID(id: string): number {
@@ -52,16 +74,15 @@ export class DocumentService {
     return -1;
   }
 
-  public activateID(id: string) {
+  getUniqueID(): string {
+    return new Date().getTime().toString();
+  }
+
+  public setActiveID(id: string): void {
     this.activeID = id;
   }
 
   public getActiveID(): string {
-    return this.activeID;
-  }
-
-  getUniqueID(): string {
-    this.activeID = new Date().getTime().toString();
     return this.activeID;
   }
 }
