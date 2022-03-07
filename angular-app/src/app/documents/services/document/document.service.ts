@@ -13,6 +13,8 @@ export class DocumentService {
 
   activeID: string = '';
 
+  timeoutID: ReturnType<typeof setTimeout> | null = null;
+
   constructor(private http: HttpClient) {}
 
   public async fetchDocuments(): Promise<DocumentItem[]> {
@@ -48,8 +50,14 @@ export class DocumentService {
   }
 
   public putUpdateDocument(document: DocumentItem): void {
-    if (document)
-      this.http.put(`${this.url}/${document.id}`, document).subscribe();
+    if (this.timeoutID) {
+      clearTimeout(this.timeoutID);
+    }
+    if (document) {
+      this.timeoutID = setTimeout(() => {
+        this.http.put(`${this.url}/${document.id}`, document).subscribe();
+      }, 3500);
+    }
   }
 
   getDocumentByID(id: string): DocumentItem | null {
