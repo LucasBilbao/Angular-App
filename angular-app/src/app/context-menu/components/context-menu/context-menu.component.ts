@@ -52,29 +52,34 @@ export class ContextMenuComponent implements OnInit, OnChanges {
   activateLinkInput(e: any): void {
     const selection = window.getSelection();
 
-    if (this.contextMenuService.isFormated(selection)) {
-      document.execCommand('unlink', false);
-      this.contextMenuOff();
-    } else {
-      let startOffset, endOffset;
+    if (selection) {
+      if (this.contextMenuService.isFormated(selection)) {
+        document.execCommand('unlink', false);
+        this.contextMenuOff();
+      } else {
+        const startOffset = Math.min(
+          selection.anchorOffset,
+          selection.focusOffset
+        );
 
-      if (selection) {
-        startOffset = Math.min(selection.anchorOffset, selection.focusOffset);
-        endOffset = Math.max(selection.anchorOffset, selection.focusOffset);
-      }
+        const endOffset = Math.max(
+          selection.anchorOffset,
+          selection.focusOffset
+        );
 
-      this.selectedTextRange = {
-        node: selection?.anchorNode,
-        startOffset: startOffset,
-        endOffset: endOffset,
-      };
-
-      if (this.contextMenuDetails) {
-        this.linkInputDetails = {
-          x: e.clientX,
-          y: e.clientY,
-          isActive: this.contextMenuDetails?.isActive,
+        this.selectedTextRange = {
+          node: selection?.anchorNode,
+          startOffset: startOffset,
+          endOffset: endOffset,
         };
+
+        if (this.contextMenuDetails) {
+          this.linkInputDetails = {
+            x: e.clientX,
+            y: e.clientY,
+            isActive: this.contextMenuDetails?.isActive,
+          };
+        }
       }
     }
   }
