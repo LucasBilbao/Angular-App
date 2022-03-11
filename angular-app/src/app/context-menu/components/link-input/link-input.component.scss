@@ -1,0 +1,12 @@
+.link-input {
+  width: 200px;
+  transform: scale(0);
+  position: absolute;
+
+  z-index: 1;
+}
+
+.link-input.active {
+  transform: scale(1);
+  transition: all ease-out 200ms;
+}
