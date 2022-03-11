@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CoreModule } from 'src/app/core/core.module';
-import { FormsModule } from '@angular/forms';
 
 import { DocumentsPageComponent } from './components/documents-page/documents-page.component';
 import { HeaderComponent } from './components/header/header.component';

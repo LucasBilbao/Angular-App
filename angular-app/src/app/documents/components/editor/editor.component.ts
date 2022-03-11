@@ -49,7 +49,6 @@ export class EditorComponent implements OnInit {
   }
 
   // These methods serve the context menu
-
   onContextMenu(e: any): void {
     e.preventDefault();
 
