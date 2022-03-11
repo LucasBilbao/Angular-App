@@ -9,8 +9,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { AppRoutingRoutingModule } from '../app-routing/app-routing-routing.module';
 
+import { AppRoutingRoutingModule } from '../app-routing/app-routing-routing.module';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [],
   imports: [
@@ -23,6 +24,7 @@ import { AppRoutingRoutingModule } from '../app-routing/app-routing-routing.modu
     MatButtonModule,
     HttpClientModule,
     AppRoutingRoutingModule,
+    FormsModule,
   ],
   exports: [
     MatInputModule,
@@ -33,6 +35,7 @@ import { AppRoutingRoutingModule } from '../app-routing/app-routing-routing.modu
     MatButtonModule,
     HttpClientModule,
     AppRoutingRoutingModule,
+    FormsModule,
   ],
 })
 export class CoreModule {}
