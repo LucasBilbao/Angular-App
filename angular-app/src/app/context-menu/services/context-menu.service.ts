@@ -8,6 +8,14 @@ import { LinkInputDetails } from '../models/link-input.model';
 export class ContextMenuService {
   constructor() {}
 
+  /**
+   * getX service method calculates an appropriate x position
+   * according tho the passed width to prevent overflowing off the screen
+   *
+   * @param x : number
+   * @param width : number
+   * @returns : number
+   */
   public getX(x: number, width: number): number {
     if (x + width / 2 > window.innerWidth) {
       return window.innerWidth - width;
@@ -21,11 +29,26 @@ export class ContextMenuService {
 
   public getY(y: number): number {
     if (y - 35 < 0) {
+  /**
+   * getY service method calculates an appropriate x position
+   * according tho the passed width to prevent overflowing off the screen
+   *
+   * @param y : number
+   * @param width : number
+   * @returns : number
+   */
       return 0;
     }
     return y - 35;
   }
 
+  /**
+   * createCustomRange service method
+   * creates a custom range and selection. This method is needed since,
+   * the selection changes when the user focused the link input field
+   *
+   * @param selectedTextRange :any
+   */
   public createCustomRange(selectedTextRange: any): void {
     const range = document.createRange();
     range.setStart(selectedTextRange.node, selectedTextRange.startOffset);
@@ -37,6 +60,13 @@ export class ContextMenuService {
   }
 
   isFormated(sel: any): boolean {
+  /**
+   * isFrormatted method checks rather the
+   * selected text is already formatted or not
+   *
+   * @param sel : any
+   * @returns : boolean
+   */
     return sel.anchorNode.parentElement.tagName !== 'DIV';
   }
 }

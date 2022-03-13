@@ -49,6 +49,15 @@ export class ContextMenuComponent implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * activateLinkInput method activates an input field
+   * in which a link is passed to create the anchor. Also,
+   * it stores the selected text range, because it changes when the
+   * input field is focused. If the selected text is already an anchor link
+   * it clears the link.
+   *
+   * @param e
+   */
   activateLinkInput(e: any): void {
     const selection = window.getSelection();
 
@@ -84,6 +93,14 @@ export class ContextMenuComponent implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * createLink method is called when the user has inputed
+   * the link, which he wishes it to v=be an anchor for, and it creates
+   * an anchor.
+   *
+   * @param link :string
+   */
+
   createLink(link: string): void {
     this.contextMenuService.createCustomRange(this.selectedTextRange);
 
@@ -92,6 +109,9 @@ export class ContextMenuComponent implements OnInit, OnChanges {
     this.contextMenuOff();
   }
 
+  /**
+   * contextMenuOff method closes the context menu
+   */
   contextMenuOff(): void {
     if (this.contextMenuDetails?.isActive) {
       this.contextMenuDetails = defaultContextMenu;

@@ -15,6 +15,13 @@ export class FontStylerComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * fontStyle method styles the selected text according
+   * to the selected font style.
+   *
+   * @param e : any
+   */
+
   fontStyle(e: any): void {
     const selection = window.getSelection();
 

@@ -49,6 +49,12 @@ export class DocumentService {
     if (document) this.http.post(this.url, document).subscribe();
   }
 
+  /**
+   * putUpdateDocument method makes an http put 
+   * request after 3.5 seconds of delay.
+   * 
+   * @param document :DocumentItem
+   */
   public putUpdateDocument(document: DocumentItem): void {
     if (this.timeoutID) {
       clearTimeout(this.timeoutID);
@@ -82,6 +88,11 @@ export class DocumentService {
     return -1;
   }
 
+  /**
+   * getuniqueID method creates a unique id according to the date.
+   * 
+   * @returns :string
+   */
   getUniqueID(): string {
     return new Date().getTime().toString();
   }
