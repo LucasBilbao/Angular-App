@@ -40,7 +40,7 @@ export class ContextMenuComponent implements OnInit, OnChanges {
     if (!this.contextMenuDetails) return;
 
     const left = this.contextMenuService.getX(this.contextMenuDetails.x, 450);
-    const top = this.contextMenuService.getY(this.contextMenuDetails.y);
+    const top = this.contextMenuService.getY(this.contextMenuDetails.y, 35);
 
     this.contextMenuStyle = { left: `${left}px`, top: `${top}px` };
 

@@ -27,8 +27,6 @@ export class ContextMenuService {
     return x - width / 2;
   }
 
-  public getY(y: number): number {
-    if (y - 35 < 0) {
   /**
    * getY service method calculates an appropriate x position
    * according tho the passed width to prevent overflowing off the screen
@@ -37,9 +35,11 @@ export class ContextMenuService {
    * @param width : number
    * @returns : number
    */
+  public getY(y: number, width: number): number {
+    if (y - width < 0) {
       return 0;
     }
-    return y - 35;
+    return y - width;
   }
 
   /**
