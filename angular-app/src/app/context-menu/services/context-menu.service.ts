@@ -59,7 +59,6 @@ export class ContextMenuService {
     sel?.addRange(range);
   }
 
-  isFormated(sel: any): boolean {
   /**
    * isFrormatted method checks rather the
    * selected text is already formatted or not
@@ -67,6 +66,7 @@ export class ContextMenuService {
    * @param sel : any
    * @returns : boolean
    */
+  isFormatted(sel: any): boolean {
     return sel.anchorNode.parentElement.tagName !== 'DIV';
   }
 }

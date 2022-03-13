@@ -62,7 +62,7 @@ export class ContextMenuComponent implements OnInit, OnChanges {
     const selection = window.getSelection();
 
     if (selection) {
-      if (this.contextMenuService.isFormated(selection)) {
+      if (this.contextMenuService.isFormatted(selection)) {
         document.execCommand('unlink', false);
         this.contextMenuOff();
       } else {
