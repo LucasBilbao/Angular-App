@@ -22,16 +22,10 @@ export class LinkInputComponent implements OnInit {
   ngOnChanges(): void | undefined {
     if (!this.linkInputDetails) return;
 
-    console.log(
-      'actual coordinates',
-      this.linkInputDetails.x,
-      this.linkInputDetails.y
-    );
     const left = this.contextMenuService.getX(this.linkInputDetails.x, 200);
     const top = this.linkInputDetails.y + 30;
 
     this.linkInputStyle = { left: `${left}px`, top: `${top}px` };
-    console.log('link input style', this.linkInputStyle);
   }
 
   submitLink(): void {
