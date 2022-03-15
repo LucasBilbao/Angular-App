@@ -11,16 +11,16 @@ import { catchError, Observable, retry, throwError } from 'rxjs';
 
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
-  url: string = 'http://localhost:3000';
+  URL: string = 'http://localhost:3000';
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const { url } = req;
+    const { url: requestURL } = req;
 
-    if (url !== `${this.url}/documents`) {
-      req = req.clone({ url: `${this.url}/${url}` });
+    if (requestURL !== `${this.URL}/documents`) {
+      req = req.clone({ url: `${this.URL}/${requestURL}` });
     }
 
     return next.handle(req).pipe(
