@@ -33,10 +33,11 @@ export class LinkInputComponent implements OnChanges {
   }
 
   submitLink(): void {
-    let theLink = this.link;
-    this.link = '';
+    const theLink = this.link.includes('http')
+      ? this.link
+      : `http://${this.link}`;
 
-    if (!theLink.includes('http')) theLink = `http://${theLink}`;
+    this.link = '';
 
     this.onSubmitLink.emit(theLink);
   }
