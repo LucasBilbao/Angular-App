@@ -60,7 +60,7 @@ export class ContextMenuComponent implements OnChanges {
     if (selection) {
       if (this.contextMenuService.isFormattedAs(selection, 'A')) {
         document.execCommand('unlink', false);
-        this.contextMenuOff();
+        this.closeContextMenu();
       } else {
         const { startOffset, endOffset } = {
           startOffset: Math.min(selection.anchorOffset, selection.focusOffset),
@@ -97,13 +97,13 @@ export class ContextMenuComponent implements OnChanges {
 
     document.execCommand('createLink', false, link);
 
-    this.contextMenuOff();
+    this.closeContextMenu();
   }
 
   /**
-   * contextMenuOff method closes the context menu
+   * closeContextMenu method closes the context menu
    */
-  contextMenuOff(): void {
+  closeContextMenu(): void {
     if (this.contextMenuDetails?.isActive) {
       this.contextMenuDetails = defaultContextMenu;
       this.linkInputDetails.isActive = false;

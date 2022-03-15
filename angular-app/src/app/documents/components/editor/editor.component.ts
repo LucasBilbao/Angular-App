@@ -57,7 +57,7 @@ export class EditorComponent implements OnInit {
     };
   }
 
-  contextMenuOff(): void {
+  closeContextMenu(): void {
     if (this.contextMenuDetails?.isActive)
       this.contextMenuDetails = defaultContextMenu;
   }
