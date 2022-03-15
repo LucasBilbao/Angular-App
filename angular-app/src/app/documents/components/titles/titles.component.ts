@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DocumentItem } from '../../models/document.model';
 
 @Component({
@@ -6,8 +6,6 @@ import { DocumentItem } from '../../models/document.model';
   templateUrl: './titles.component.html',
   styleUrls: ['./titles.component.scss'],
 })
-export class TitlesComponent implements OnInit {
+export class TitlesComponent {
   @Input() documents: DocumentItem[] = [];
-
-  ngOnInit(): void {}
 }

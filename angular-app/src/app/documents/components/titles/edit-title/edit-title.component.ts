@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { DocumentItem } from 'src/app/documents/models/document.model';
 import { DocumentService } from 'src/app/documents/services/document/document.service';
@@ -8,7 +8,7 @@ import { DocumentService } from 'src/app/documents/services/document/document.se
   templateUrl: './edit-title.component.html',
   styleUrls: ['./edit-title.component.scss'],
 })
-export class EditTitleComponent implements OnInit {
+export class EditTitleComponent {
   @Input() document: DocumentItem | null = null;
 
   focus: boolean = true;
@@ -19,8 +19,6 @@ export class EditTitleComponent implements OnInit {
     private documentService: DocumentService,
     private router: Router
   ) {}
-
-  ngOnInit(): void {}
 
   commitTitle(): void {
     if (this.document) {

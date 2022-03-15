@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import {
   ContextMenu,
   defaultContextMenu,
@@ -16,7 +16,7 @@ import { ContextMenuService } from 'src/app/context-menu/services/context-menu.s
   templateUrl: './context-menu.component.html',
   styleUrls: ['./context-menu.component.scss'],
 })
-export class ContextMenuComponent implements OnInit, OnChanges {
+export class ContextMenuComponent implements OnChanges {
   @Input() contextMenuDetails: ContextMenu = defaultContextMenu;
 
   contextMenuStyle: any = {};
@@ -33,8 +33,6 @@ export class ContextMenuComponent implements OnInit, OnChanges {
   selectedTextRange: any;
 
   constructor(private contextMenuService: ContextMenuService) {}
-
-  ngOnInit(): void {}
 
   ngOnChanges() {
     const left = this.contextMenuService.getX(this.contextMenuDetails.x, 450);
@@ -64,15 +62,10 @@ export class ContextMenuComponent implements OnInit, OnChanges {
         document.execCommand('unlink', false);
         this.contextMenuOff();
       } else {
-        const startOffset = Math.min(
-          selection.anchorOffset,
-          selection.focusOffset
-        );
-
-        const endOffset = Math.max(
-          selection.anchorOffset,
-          selection.focusOffset
-        );
+        const { startOffset, endOffset } = {
+          startOffset: Math.min(selection.anchorOffset, selection.focusOffset),
+          endOffset: Math.max(selection.anchorOffset, selection.focusOffset),
+        };
 
         this.selectedTextRange = {
           node: selection?.anchorNode,

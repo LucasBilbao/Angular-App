@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ContextMenuItem } from '../../models/context-menu-item.model';
 import { ContextMenuService } from '../../services/context-menu.service';
 
@@ -7,13 +7,11 @@ import { ContextMenuService } from '../../services/context-menu.service';
   templateUrl: './style-formatter.component.html',
   styleUrls: ['./style-formatter.component.scss'],
 })
-export class StyleFormatterComponent implements OnInit {
+export class StyleFormatterComponent {
   @Input() styleItem: ContextMenuItem | null = null;
   @Output() closeContextMenu = new EventEmitter();
 
   constructor(private contextMenuService: ContextMenuService) {}
-
-  ngOnInit(): void {}
 
   formatStyle(e: any): void {
     const command = e.target.parentElement.id;

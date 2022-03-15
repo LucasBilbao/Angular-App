@@ -4,7 +4,6 @@ import {
   ContextMenu,
   defaultContextMenu,
 } from 'src/app/context-menu/models/context-menu.model';
-import { ContextMenuService } from 'src/app/context-menu/services/context-menu.service';
 import { DocumentItem } from '../../models/document.model';
 import { DocumentService } from '../../services/document/document.service';
 
@@ -21,8 +20,7 @@ export class EditorComponent implements OnInit {
 
   constructor(
     private documentService: DocumentService,
-    private activatedRoute: ActivatedRoute,
-    private contextMenuService: ContextMenuService
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {

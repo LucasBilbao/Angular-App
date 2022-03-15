@@ -6,8 +6,6 @@ import { LinkInputDetails } from '../models/link-input.model';
   providedIn: 'root',
 })
 export class ContextMenuService {
-  constructor() {}
-
   /**
    * getX service method calculates an appropriate x position
    * according tho the passed width to prevent overflowing off the screen

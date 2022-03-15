@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { DocumentItem } from 'src/app/documents/models/document.model';
 import { DocumentService } from 'src/app/documents/services/document/document.service';
@@ -8,7 +8,7 @@ import { DocumentService } from 'src/app/documents/services/document/document.se
   templateUrl: './title-card.component.html',
   styleUrls: ['./title-card.component.scss'],
 })
-export class TitleCardComponent implements OnInit {
+export class TitleCardComponent {
   @Input() document: DocumentItem | null = null;
 
   title: string = '';
@@ -19,8 +19,6 @@ export class TitleCardComponent implements OnInit {
     private documentService: DocumentService,
     private router: Router
   ) {}
-
-  ngOnInit(): void {}
 
   deleteDocument(): void {
     if (this.document) {
