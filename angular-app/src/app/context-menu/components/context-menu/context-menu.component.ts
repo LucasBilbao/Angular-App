@@ -17,7 +17,7 @@ import { ContextMenuService } from 'src/app/context-menu/services/context-menu.s
   styleUrls: ['./context-menu.component.scss'],
 })
 export class ContextMenuComponent implements OnInit, OnChanges {
-  @Input() contextMenuDetails: ContextMenu | null = null;
+  @Input() contextMenuDetails: ContextMenu = defaultContextMenu;
 
   contextMenuStyle: any = {};
 
@@ -36,9 +36,7 @@ export class ContextMenuComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
-  ngOnChanges(): void | undefined {
-    if (!this.contextMenuDetails) return;
-
+  ngOnChanges() {
     const left = this.contextMenuService.getX(this.contextMenuDetails.x, 450);
     const top = this.contextMenuService.getY(this.contextMenuDetails.y, 35);
 
