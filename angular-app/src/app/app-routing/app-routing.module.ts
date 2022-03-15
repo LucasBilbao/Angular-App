@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { EditorComponent } from '../documents/components/editor/editor.component';
 
-import { AppRoutingRoutingModule } from './app-routing-routing.module';
-
+const routes: Routes = [
+  { path: 'document/:id', component: EditorComponent },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
+  },
+];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    AppRoutingRoutingModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

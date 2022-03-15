@@ -10,7 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 
-import { AppRoutingRoutingModule } from '../app-routing/app-routing-routing.module';
+import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [],
@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     MatMenuModule,
     MatButtonModule,
     HttpClientModule,
-    AppRoutingRoutingModule,
+    AppRoutingModule,
     FormsModule,
   ],
   exports: [
@@ -34,7 +34,7 @@ import { FormsModule } from '@angular/forms';
     MatMenuModule,
     MatButtonModule,
     HttpClientModule,
-    AppRoutingRoutingModule,
+    AppRoutingModule,
     FormsModule,
   ],
 })
