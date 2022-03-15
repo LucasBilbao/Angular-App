@@ -1,10 +1,7 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[appClickStopPropagation]'
+  selector: '[appClickStopPropagation]',
 })
 export class ClickStopPropagationDirective {
-
-  constructor() { }
-
 }

@@ -9,7 +9,5 @@ import { DocumentItem } from '../../models/document.model';
 export class TitlesComponent implements OnInit {
   @Input() documents: DocumentItem[] = [];
 
-  constructor() {}
-
   ngOnInit(): void {}
 }

@@ -11,7 +11,5 @@ export class TitleComponent implements OnInit {
 
   isTitled: boolean = false;
 
-  constructor() {}
-
   ngOnInit(): void {}
 }

@@ -13,8 +13,6 @@ import { catchError, Observable, retry, throwError } from 'rxjs';
 export class CustomHttpInterceptor implements HttpInterceptor {
   url: string = 'http://localhost:3000';
 
-  constructor() {}
-
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
