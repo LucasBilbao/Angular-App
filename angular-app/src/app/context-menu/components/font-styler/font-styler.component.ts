@@ -23,17 +23,32 @@ export class FontStylerComponent {
   fontStyle(e: any): void {
     const selection = window.getSelection();
 
+    const element = selection?.anchorNode?.parentElement;
+    const text = element?.textContent;
+
     const command = e.target.parentElement.id;
 
     if (command !== 'quote') {
-      document.execCommand(
-        'insertHTML',
-        false,
-        `<${command}>${selection}</${command}>`
-      );
+      if (this.isHeading(selection)) {
+        if (element) element.remove();
+        document.execCommand('insertText', false, `${text}`);
+      } else {
+        document.execCommand(
+          'insertHTML',
+          false,
+          `<${command}>${selection}</${command}>`
+        );
+      }
     } else {
       document.execCommand('insertText', false, `"${selection}"`);
     }
     this.closeContextMenu.emit();
+  }
+
+  isHeading(sel: any): boolean {
+    const isHeading1 = this.contextMenuService.isFormattedAs(sel, 'H1');
+    const isHeading2 = this.contextMenuService.isFormattedAs(sel, 'H2');
+
+    return isHeading1 || isHeading2;
   }
 }
