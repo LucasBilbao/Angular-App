@@ -20,7 +20,7 @@ export class StyleFormatterComponent implements OnInit {
 
     if (command === 'code') {
       const selection = window.getSelection();
-      if (this.contextMenuService.isFormatted(selection)) {
+      if (this.contextMenuService.isFormattedAs(selection, 'CODE')) {
         const selected = selection?.toString();
         document.execCommand('insertHTML', false, '');
         document.execCommand('insertHTML', false, `${selected}`);

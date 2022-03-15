@@ -66,7 +66,7 @@ export class ContextMenuService {
    * @param sel : any
    * @returns : boolean
    */
-  isFormatted(sel: any): boolean {
-    return sel.anchorNode.parentElement.tagName !== 'DIV';
+  isFormattedAs(sel: any, format: string): boolean {
+    return sel.anchorNode.parentElement.tagName === format;
   }
 }
