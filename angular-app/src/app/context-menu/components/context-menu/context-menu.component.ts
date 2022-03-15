@@ -69,8 +69,8 @@ export class ContextMenuComponent implements OnChanges {
 
         this.selectedTextRange = {
           node: selection?.anchorNode,
-          startOffset: startOffset,
-          endOffset: endOffset,
+          startOffset,
+          endOffset,
         };
 
         if (this.contextMenuDetails) {
