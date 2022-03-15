@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+} from '@angular/core';
 import { LinkInputDetails } from 'src/app/context-menu/models/link-input.model';
 import { ContextMenuService } from 'src/app/context-menu/services/context-menu.service';
 
@@ -7,7 +13,7 @@ import { ContextMenuService } from 'src/app/context-menu/services/context-menu.s
   templateUrl: './link-input.component.html',
   styleUrls: ['./link-input.component.scss'],
 })
-export class LinkInputComponent implements OnInit {
+export class LinkInputComponent implements OnChanges {
   @Input() linkInputDetails: LinkInputDetails | null = null;
   @Output() onSubmitLink = new EventEmitter<string>();
 
@@ -16,8 +22,6 @@ export class LinkInputComponent implements OnInit {
   constructor(private contextMenuService: ContextMenuService) {}
 
   link: string = '';
-
-  ngOnInit(): void {}
 
   ngOnChanges(): void | undefined {
     if (!this.linkInputDetails) return;
