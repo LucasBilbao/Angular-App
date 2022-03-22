@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { DocumentItem } from '../../models/document.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Debounce } from 'angular-debounce-throttle';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +13,6 @@ export class DocumentService {
   private url: string = 'documents';
 
   private activeID: string = '';
-
-  private timeoutID!: ReturnType<typeof setTimeout>;
 
   constructor(private http: HttpClient) {}
 
@@ -55,15 +54,9 @@ export class DocumentService {
    *
    * @param document :DocumentItem
    */
+  @Debounce(3500)
   public putUpdateDocument(document: DocumentItem): void {
-    if (this.timeoutID) {
-      clearTimeout(this.timeoutID);
-    }
-    if (document) {
-      this.timeoutID = setTimeout(() => {
-        this.http.put(`${this.url}/${document.id}`, document).subscribe();
-      }, 3500);
-    }
+    this.http.put(`${this.url}/${document.id}`, document).subscribe();
   }
 
   public getDocumentByID(id: string): DocumentItem | undefined {
