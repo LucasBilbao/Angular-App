@@ -19,9 +19,9 @@ export class CustomHttpInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const { url: requestURL } = req;
 
-    if (requestURL !== `${this.URL}/documents`) {
-      req = req.clone({ url: `${this.URL}/${requestURL}` });
-    }
+    req = !requestURL.startsWith(this.URL)
+      ? req.clone({ url: `${this.URL}/${requestURL}` })
+      : req;
 
     return next.handle(req).pipe(
       retry(2),
