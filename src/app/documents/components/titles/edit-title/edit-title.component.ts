@@ -19,12 +19,10 @@ export class EditTitleComponent {
   ) {}
 
   commitTitle(): void {
-    if (this.document) {
-      this.document.isTitled = true;
-      this.document.title = this.title;
-      this.documentService.postNewDocument(this.document);
-      this.router.navigate(['document', this.document?.id]);
-    }
+    this.document.isTitled = true;
+    this.document.title = this.title;
+    this.documentService.postNewDocument(this.document);
+    this.router.navigate(['document', this.document?.id]);
   }
 
   isAValidTitle(): boolean {
@@ -32,9 +30,7 @@ export class EditTitleComponent {
   }
 
   deleteDocument(): void {
-    if (this.document) {
-      this.documentService.deleteItemByID(this.document.id);
-      this.router.navigateByUrl('');
-    }
+    this.documentService.deleteItemByID(this.document.id);
+    this.router.navigateByUrl('');
   }
 }

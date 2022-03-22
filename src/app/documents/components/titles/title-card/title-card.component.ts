@@ -21,10 +21,8 @@ export class TitleCardComponent {
   ) {}
 
   deleteDocument(): void {
-    if (this.document) {
-      this.documentService.deleteItemByID(this.document.id).subscribe();
-      this.router.navigateByUrl('');
-    }
+    this.documentService.deleteItemByID(this.document.id).subscribe();
+    this.router.navigateByUrl('');
   }
 
   activateDocument(): void {
