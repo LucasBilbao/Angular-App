@@ -31,7 +31,7 @@ export class LinkInputComponent implements OnChanges {
   }
 
   onSubmitLink(): void {
-    const theLink: string = this.link.includes('http://') || this.link.includes('https://')
+    const theLink: string = this.link.startsWith('http://') || this.link.startsWith('https://')
       ? this.link
       : `http://${this.link}`;
 
