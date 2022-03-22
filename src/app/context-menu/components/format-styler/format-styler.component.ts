@@ -3,12 +3,12 @@ import { ContextMenuItem } from '../../models/context-menu-item.model';
 import { ContextMenuService } from '../../services/context-menu.service';
 
 @Component({
-  selector: 'app-font-styler',
-  templateUrl: './font-styler.component.html',
-  styleUrls: ['./font-styler.component.scss'],
+  selector: 'app-format-styler',
+  templateUrl: './format-styler.component.html',
+  styleUrls: ['./format-styler.component.scss'],
 })
-export class FontStylerComponent {
-  @Input() fontItem: ContextMenuItem | null = null;
+export class FormatStylerComponent {
+  @Input() formatItem!: ContextMenuItem;
   @Output() closeContextMenu = new EventEmitter();
 
   constructor(private contextMenuService: ContextMenuService) {}
@@ -20,7 +20,7 @@ export class FontStylerComponent {
    * @param e : any
    */
 
-  fontStyle(e: any): void {
+  formatStyle(e: any): void {
     const selection = window.getSelection();
 
     const element = selection?.anchorNode?.parentElement;

@@ -13,7 +13,7 @@ export class DocumentService {
 
   private activeID: string = '';
 
-  private timeoutID: ReturnType<typeof setTimeout> | null = null;
+  private timeoutID!: ReturnType<typeof setTimeout>;
 
   constructor(private http: HttpClient) {}
 
@@ -24,12 +24,12 @@ export class DocumentService {
 
     return new Promise((res) => {
       setTimeout(() => {
-        res(this.getDocuments());
+        res(this.Documents);
       }, 2500);
     });
   }
 
-  getDocuments(): DocumentItem[] {
+  public get Documents(): DocumentItem[] {
     return this.documents;
   }
 
@@ -66,10 +66,11 @@ export class DocumentService {
     }
   }
 
-  getDocumentByID(id: string): DocumentItem | undefined {
+  public getDocumentByID(id: string): DocumentItem | undefined {
     for (let i = 0; i < this.documents.length; i += 1) {
       if (this.documents[i].id === id) return this.documents[i];
     }
+
     return;
   }
 

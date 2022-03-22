@@ -13,10 +13,10 @@ import { DocumentService } from '../../services/document/document.service';
   styleUrls: ['./editor.component.scss'],
 })
 export class EditorComponent implements OnInit {
-  document: DocumentItem | undefined;
+  document!: DocumentItem;
   contextMenuDetails: ContextMenu = defaultContextMenu;
 
-  value: string | undefined = '';
+  value: string = '';
 
   constructor(
     private documentService: DocumentService,
@@ -26,13 +26,13 @@ export class EditorComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.documentService.ActiveID = params['id'];
-      this.document = this.documentService.getDocumentByID(params['id']);
-      this.value = this.document?.description;
+      this.document = this.documentService.getDocumentByID(params['id'])!;
+      this.value = this.document!.description;
     });
   }
 
   onInput(e: any): void {
-    const document: DocumentItem | undefined = this.document;
+    const document: DocumentItem = this.document;
     const inputValue = e.target.innerHTML;
 
     if (document) {

@@ -6,7 +6,7 @@ import { DocumentItem } from 'src/app/documents/models/document.model';
   templateUrl: './title.component.html',
 })
 export class TitleComponent {
-  @Input() document: DocumentItem | undefined;
+  @Input() document!: DocumentItem;
 
   isTitled: boolean = false;
 }

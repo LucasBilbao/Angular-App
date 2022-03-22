@@ -9,7 +9,7 @@ import { DocumentService } from 'src/app/documents/services/document/document.se
   styleUrls: ['./title-card.component.scss'],
 })
 export class TitleCardComponent {
-  @Input() document: DocumentItem | undefined;
+  @Input() document!: DocumentItem;
 
   title: string = '';
 

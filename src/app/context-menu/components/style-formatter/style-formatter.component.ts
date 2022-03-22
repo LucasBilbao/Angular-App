@@ -8,7 +8,7 @@ import { ContextMenuService } from '../../services/context-menu.service';
   styleUrls: ['./style-formatter.component.scss'],
 })
 export class StyleFormatterComponent {
-  @Input() styleItem: ContextMenuItem | null = null;
+  @Input() styleItem!: ContextMenuItem;
   @Output() closeContextMenu = new EventEmitter();
 
   constructor(private contextMenuService: ContextMenuService) {}

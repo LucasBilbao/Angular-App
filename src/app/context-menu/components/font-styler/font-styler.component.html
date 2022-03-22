@@ -1,8 +1,0 @@
-<div class="item" (click)="fontStyle($event)" [id]="fontItem?.id">
-  <mat-icon *ngIf="fontItem?.hasIcon; else withoutIcon">{{
-    fontItem?.iconCode
-  }}</mat-icon>
-  <ng-template #withoutIcon>
-    <button>{{ fontItem?.id | uppercase }}</button>
-  </ng-template>
-</div>

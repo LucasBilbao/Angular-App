@@ -9,7 +9,7 @@ import { DocumentService } from 'src/app/documents/services/document/document.se
   styleUrls: ['./edit-title.component.scss'],
 })
 export class EditTitleComponent {
-  @Input() document: DocumentItem | undefined;
+  @Input() document!: DocumentItem;
 
   title: string = '';
 

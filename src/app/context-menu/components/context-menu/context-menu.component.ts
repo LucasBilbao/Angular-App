@@ -21,8 +21,8 @@ export class ContextMenuComponent implements OnChanges {
 
   contextMenuStyle: any = {};
 
-  styleFormat: ContextMenuItem[] = styleContextMenuItems;
-  fontFormat: ContextMenuItem[] = formatContextMenuItems;
+  styleContextMenuItems: ContextMenuItem[] = styleContextMenuItems;
+  formatContextMenuItems: ContextMenuItem[] = formatContextMenuItems;
 
   linkInputDetails: LinkInputDetails = {
     x: 0,

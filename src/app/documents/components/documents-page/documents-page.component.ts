@@ -9,7 +9,7 @@ import { DocumentService } from '../../services/document/document.service';
 })
 export class DocumentsPageComponent implements OnInit {
   documents: DocumentItem[] = [];
-  activeDocument: DocumentItem | null = null;
+  activeDocument!: DocumentItem;
 
   isLoading: boolean = true;
 
@@ -22,7 +22,7 @@ export class DocumentsPageComponent implements OnInit {
     });
   }
 
-  canCreateNewDocument() {
+  canCreateNewDocument(): boolean {
     const documentsCount = this.documents.length;
 
     if (documentsCount === 0) return true;
@@ -33,6 +33,6 @@ export class DocumentsPageComponent implements OnInit {
 
   createNewDocument(): void {
     this.documentService.addNewDocument();
-    this.documents = this.documentService.getDocuments();
+    this.documents = this.documentService.Documents;
   }
 }

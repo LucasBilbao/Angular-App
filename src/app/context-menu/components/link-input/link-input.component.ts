@@ -14,7 +14,7 @@ import { ContextMenuService } from 'src/app/context-menu/services/context-menu.s
   styleUrls: ['./link-input.component.scss'],
 })
 export class LinkInputComponent implements OnChanges {
-  @Input() linkInputDetails: LinkInputDetails | null = null;
+  @Input() linkInputDetails!: LinkInputDetails;;
   @Output() submitLink = new EventEmitter<string>();
 
   linkInputStyle: any = {};
@@ -23,9 +23,7 @@ export class LinkInputComponent implements OnChanges {
 
   link: string = '';
 
-  ngOnChanges(): void | undefined {
-    if (!this.linkInputDetails) return;
-
+  ngOnChanges() {
     const left = this.contextMenuService.getX(this.linkInputDetails.x, 200);
     const top = this.linkInputDetails.y + 30;
 
@@ -33,7 +31,7 @@ export class LinkInputComponent implements OnChanges {
   }
 
   onSubmitLink(): void {
-    const theLink = this.link.includes('http')
+    const theLink: string = this.link.includes('http://') || this.link.includes('https://')
       ? this.link
       : `http://${this.link}`;
 

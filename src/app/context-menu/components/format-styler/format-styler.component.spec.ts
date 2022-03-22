@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FontStylerComponent } from './font-styler.component';
+import { FormatStylerComponent } from './format-styler.component';
 
 describe('FortStylerComponent', () => {
-  let component: FontStylerComponent;
-  let fixture: ComponentFixture<FontStylerComponent>;
+  let component: FormatStylerComponent;
+  let fixture: ComponentFixture<FormatStylerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FontStylerComponent ]
+      declarations: [ FormatStylerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FontStylerComponent);
+    fixture = TestBed.createComponent(FormatStylerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

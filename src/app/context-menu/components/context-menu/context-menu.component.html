@@ -5,18 +5,18 @@
   appClickStopPropagation
 >
   <app-style-formatter
-    *ngFor="let style of styleFormat"
+    *ngFor="let style of styleContextMenuItems"
     [styleItem]="style"
     (closeContextMenu)="closeContextMenu()"
   ></app-style-formatter>
 
   <div class="divider"></div>
 
-  <app-font-styler
-    *ngFor="let font of fontFormat"
-    [fontItem]="font"
+  <app-format-styler
+    *ngFor="let format of formatContextMenuItems"
+    [formatItem]="format"
     (closeContextMenu)="closeContextMenu()"
-  ></app-font-styler>
+  ></app-format-styler>
 
   <div class="divider"></div>
 
