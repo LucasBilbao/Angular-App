@@ -7,12 +7,12 @@
       [(ngModel)]="title"
       name="title"
       autocomplete="off"
-      *ngIf="!document?.isTitled"
+      *ngIf="!document.title.length"
       appMyAutoFocus
     />
   </form>
   <button
-    *ngIf="title && !document?.isTitled"
+    *ngIf="title && !document.title.length"
     matSuffix
     mat-icon-button
     aria-label="Check"
@@ -22,7 +22,7 @@
     <mat-icon color="primary">check</mat-icon>
   </button>
   <button
-    *ngIf="title && !document?.isTitled"
+    *ngIf="title && !document.title.length"
     matSuffix
     mat-icon-button
     aria-label="Clear"

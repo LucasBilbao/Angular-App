@@ -25,7 +25,7 @@ export class EditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      this.documentService.ActiveID = params['id'];
+      this.documentService.activeID = params['id'];
       this.document = this.documentService.getDocumentByID(params['id'])!;
       this.value = this.document!.description;
     });
@@ -53,7 +53,7 @@ export class EditorComponent implements OnInit {
   }
 
   closeContextMenu(): void {
-    if (this.contextMenuDetails?.isActive)
+    if (this.contextMenuDetails.isActive)
       this.contextMenuDetails = defaultContextMenu;
   }
 }

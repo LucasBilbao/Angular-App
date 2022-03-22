@@ -1,8 +1,8 @@
-<div class="item" (click)="formatStyle($event)" [id]="formatItem?.id">
-  <mat-icon *ngIf="formatItem?.hasIcon; else withoutIcon">{{
-    formatItem?.iconCode
+<div class="item" (click)="formatStyle($event)" [id]="formatItem.id">
+  <mat-icon *ngIf="formatItem.hasIcon; else withoutIcon">{{
+    formatItem.iconCode
   }}</mat-icon>
   <ng-template #withoutIcon>
-    <button>{{ formatItem?.id | uppercase }}</button>
+    <button>{{ formatItem.id | uppercase }}</button>
   </ng-template>
 </div>

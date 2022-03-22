@@ -1,5 +1,5 @@
 <app-edit-title
-  *ngIf="!document?.isTitled; else titleCard"
+  *ngIf="!document.title.length; else titleCard"
   [document]="document"
 ></app-edit-title>
 

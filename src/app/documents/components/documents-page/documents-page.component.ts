@@ -22,17 +22,17 @@ export class DocumentsPageComponent implements OnInit {
     });
   }
 
-  canCreateNewDocument(): boolean {
+  isAbleToCreateNewDocument(): boolean {
     const documentsCount = this.documents.length;
 
     if (documentsCount === 0) return true;
     else {
-      return this.documents[documentsCount - 1].isTitled;
+      return Boolean(this.documents[documentsCount - 1].title.length);
     }
   }
 
   createNewDocument(): void {
     this.documentService.addNewDocument();
-    this.documents = this.documentService.Documents;
+    this.documents = this.documentService.documents;
   }
 }

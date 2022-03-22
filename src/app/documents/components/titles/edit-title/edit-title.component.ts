@@ -19,14 +19,13 @@ export class EditTitleComponent {
   ) {}
 
   commitTitle(): void {
-    this.document.isTitled = true;
     this.document.title = this.title;
     this.documentService.postNewDocument(this.document);
-    this.router.navigate(['document', this.document?.id]);
+    this.router.navigate(['document', this.document.id]);
   }
 
   isAValidTitle(): boolean {
-    return !!this.title.length;
+    return Boolean(this.title.length);
   }
 
   deleteDocument(): void {

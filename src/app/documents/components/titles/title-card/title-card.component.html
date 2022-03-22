@@ -1,13 +1,13 @@
 <mat-card
   class="title-card"
-  *ngIf="document.isTitled"
+  *ngIf="document.title.length"
   (click)="activateDocument()"
   [class.active]="isActive()"
 >
-  {{ document?.title }}
+  {{ document.title }}
 
   <button
-    *ngIf="document.isTitled"
+    *ngIf="document.title.length"
     mat-icon-button
     mat-button
     [matMenuTriggerFor]="delete"

@@ -26,10 +26,10 @@ export class TitleCardComponent {
   }
 
   activateDocument(): void {
-    this.router.navigateByUrl(`document/${this.document?.id}`);
+    this.router.navigateByUrl(`document/${this.document.id}`);
   }
 
   isActive(): boolean {
-    return this.documentService.ActiveID === this.document?.id;
+    return this.documentService.activeID === this.document.id;
   }
 }

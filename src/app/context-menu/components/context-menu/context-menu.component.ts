@@ -73,13 +73,11 @@ export class ContextMenuComponent implements OnChanges {
           endOffset,
         };
 
-        if (this.contextMenuDetails) {
-          this.linkInputDetails = {
-            x: e.clientX,
-            y: e.clientY,
-            isActive: this.contextMenuDetails?.isActive,
-          };
-        }
+        this.linkInputDetails = {
+          x: e.clientX,
+          y: e.clientY,
+          isActive: this.contextMenuDetails.isActive,
+        };
       }
     }
   }
@@ -104,7 +102,7 @@ export class ContextMenuComponent implements OnChanges {
    * closeContextMenu method closes the context menu
    */
   closeContextMenu(): void {
-    if (this.contextMenuDetails?.isActive) {
+    if (this.contextMenuDetails.isActive) {
       this.contextMenuDetails = defaultContextMenu;
       this.linkInputDetails.isActive = false;
     }

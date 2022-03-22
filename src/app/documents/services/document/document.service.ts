@@ -8,11 +8,11 @@ import { Debounce } from 'angular-debounce-throttle';
   providedIn: 'root',
 })
 export class DocumentService {
-  private documents: DocumentItem[] = [];
+  documents: DocumentItem[] = [];
 
   private url: string = 'documents';
 
-  private activeID: string = '';
+  activeID: string = '';
 
   constructor(private http: HttpClient) {}
 
@@ -23,13 +23,9 @@ export class DocumentService {
 
     return new Promise((res) => {
       setTimeout(() => {
-        res(this.Documents);
+        res(this.documents);
       }, 2500);
     });
-  }
-
-  public get Documents(): DocumentItem[] {
-    return this.documents;
   }
 
   public addNewDocument(): void {
@@ -39,7 +35,6 @@ export class DocumentService {
         id: this.getUniqueID(),
         title: '',
         description: '',
-        isTitled: false,
       },
     ];
   }
@@ -89,13 +84,5 @@ export class DocumentService {
    */
   getUniqueID(): string {
     return new Date().getTime().toString();
-  }
-
-  public set ActiveID(id: string) {
-    this.activeID = id;
-  }
-
-  public get ActiveID(): string {
-    return this.activeID;
   }
 }
