@@ -28,7 +28,7 @@ export class EditTitleComponent {
   }
 
   isAValidTitle(): boolean {
-    return Boolean(this.title.length);
+    return !!this.title.length;
   }
 
   deleteDocument(): void {
