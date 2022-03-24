@@ -1,0 +1,31 @@
+<div
+  class="context-menu"
+  [ngStyle]="contextMenuStyle"
+  [class.active]="contextMenuDetails.isActive"
+  appClickStopPropagation
+>
+  <app-style-formatter
+    *ngFor="let style of styleContextMenuItems"
+    [styleItem]="style"
+    (closeContextMenu)="closeContextMenu()"
+  ></app-style-formatter>
+
+  <div class="divider"></div>
+
+  <app-format-styler
+    *ngFor="let format of formatContextMenuItems"
+    [formatItem]="format"
+    (closeContextMenu)="closeContextMenu()"
+  ></app-format-styler>
+
+  <div class="divider"></div>
+
+  <div class="item" (click)="activateLinkInput($event)">
+    <mat-icon>link</mat-icon>
+  </div>
+</div>
+
+<app-link-input
+  [linkInputDetails]="linkInputDetails"
+  (submitLink)="createLink($event)"
+></app-link-input>

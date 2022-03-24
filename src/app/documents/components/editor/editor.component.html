@@ -1,0 +1,13 @@
+<div
+  class="note-area"
+  *ngIf="document"
+  data-placeholder="Write something nice..."
+  (input)="onInput($event)"
+  contentEditable="true"
+  [innerHTML]="value"
+  (contextmenu)="onContextMenu($event)"
+  (click)="closeContextMenu()"
+  appClickStopPropagation
+></div>
+
+<app-context-menu [contextMenuDetails]="contextMenuDetails"></app-context-menu>

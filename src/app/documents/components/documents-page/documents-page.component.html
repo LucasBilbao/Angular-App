@@ -1,0 +1,21 @@
+<app-loader *ngIf="isLoading; else documentsPage"></app-loader>
+
+<ng-template #documentsPage>
+  <div class="wrapper">
+    <app-header [documentsCount]="documents.length"></app-header>
+    <main class="grid-item2">
+      <router-outlet></router-outlet>
+    </main>
+    <nav>
+      <app-titles [documents]="documents"></app-titles>
+      <button
+        (click)="createNewDocument()"
+        mat-button
+        class="btn-add-document"
+        [disabled]="!isAbleToCreateNewDocument()"
+      >
+        +
+      </button>
+    </nav>
+  </div>
+</ng-template>

@@ -1,0 +1,23 @@
+<mat-card
+  class="title-card"
+  *ngIf="document.title.length"
+  (click)="activateDocument()"
+  [class.active]="isActive()"
+>
+  {{ document.title }}
+
+  <button
+    *ngIf="document.title.length"
+    mat-icon-button
+    mat-button
+    [matMenuTriggerFor]="delete"
+    aria-label="Delete"
+    class="delete-btn"
+  >
+    <mat-icon color="warn">delete</mat-icon>
+  </button>
+
+  <mat-menu #delete="matMenu">
+    <button mat-menu-item (click)="deleteDocument()">Delete</button>
+  </mat-menu>
+</mat-card>

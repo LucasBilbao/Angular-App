@@ -1,0 +1,59 @@
+$border-width: 2.5px;
+
+@mixin flexing-box($size, $border-color) {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  width: $size;
+  height: $size;
+
+  border: $border-width solid $border-color;
+}
+
+@mixin animate-box($duration) {
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-duration: $duration;
+  animation-timing-function: ease-out;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.loader {
+  position: relative;
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+
+  .outer-box {
+    @include flexing-box(75px, #3f51b5);
+    @include animate-box(4500ms);
+  }
+  .middle-box {
+    @include flexing-box(50px, rgb(255, 57, 57));
+    @include animate-box(1500ms);
+  }
+  .inner-box {
+    @include flexing-box(25px, #3f51b5);
+    @include animate-box(900ms);
+  }
+}

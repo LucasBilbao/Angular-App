@@ -1,0 +1,32 @@
+<mat-form-field
+  class="link-input"
+  [class.active]="linkInputDetails.isActive"
+  [ngStyle]="linkInputStyle"
+  appearance="fill"
+  appClickStopPropagation
+>
+  <mat-label>Input link here</mat-label>
+  <form (submit)="onSubmitLink()">
+    <input
+      appMyAutoFocus
+      matInput
+      type="text"
+      [(ngModel)]="link"
+      autocomplete="off"
+      name="link"
+    />
+  </form>
+
+  <button *ngIf="link" matSuffix mat-icon-button aria-label="Check">
+    <mat-icon color="primary" (click)="onSubmitLink()">check</mat-icon>
+  </button>
+  <button
+    *ngIf="link"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="link = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
